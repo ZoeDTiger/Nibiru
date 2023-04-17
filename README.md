@@ -27,7 +27,6 @@
     nibid tx wasm store $CONTRACT_WASM --from $KEY_NAME --gas=2000000 --fees=200000unibi --chain-id nibiru-itn-1
 <img width="795" alt="_20230417180816" src="https://user-images.githubusercontent.com/100336530/232454292-2a335855-5c49-4dc7-a21d-1e76c015c3e8.png">
 
-#### 查询交易结果
     txhash=刚刚的txhash
     nibid query tx $txhash --output json | jq -r '.logs[] | .events[]'
 <img width="852" alt="_20230417180954" src="https://user-images.githubusercontent.com/100336530/232454712-011f45d7-5dfa-4ed2-baf9-11290d2c7eb5.png">
