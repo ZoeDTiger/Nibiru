@@ -8,30 +8,30 @@
 ## 激励性测试网第一阶段-部署节点
     创建验证人（无论是否活跃）有75分。只需要同步一个完整的节点并发送一个创建验证人交易，如果没有被监禁额外加50分
 
-### 安装基础环境-go
+##### 安装基础环境-go
     
     
-### 下载源代码并编译
+##### 下载源代码并编译
     git clone https://github.com/NibiruChain/nibiru
     cd nibiru
     git checkout  v0.19.2
     make install
 
-### 初始化节点
+##### 初始化节点
     moniker=<你的节点名>
     nibid init $moniker --chain-id=nibiru-itn-1
     nibid config chain-id nibiru-itn-1
 
-### 下载Genesis文件
+##### 下载Genesis文件
     curl -s https://rpc.itn-1.nibiru.fi/genesis | jq -r .result.genesis >  ~/.nibid/config/genesis.json
 
-### 设置peer和seed
+##### 设置peer和seed
        PEERS="df8596fa04abeff1d15b79570ff8c3eba85ed87a@35.185.8.9:26656,4a81486786a7c744691dc500360efcdaf22f0840@15.235.46.50:26656,c709cad9e11b315644fe8f1d2e90c03c5cba685c@34.91.8.241:26656,930b1eb3f0e57b97574ed44cb53b69fb65722786@144.76.30.36:15662,ad002a4592e7bcdfff31eedd8cee7763b39601e7@65.109.122.105:36656"
     seeds="a431d3d1b451629a21799963d9eb10d83e261d2c@seed-1.itn-1.nibiru.fi:26656,6a78a2a5f19c93661a493ecbe69afc72b5c54117@seed-2.itn-1.nibiru.fi:26656"
     sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" $HOME/.nibid/config/config.toml
     sed -i.bak -e "s/^seeds *=.*/seeds = \"$seeds\"/" ~/.nibid/config/config.toml
 
-### Pruning设置
+##### Pruning设置
     pruning="custom" && \
     pruning_keep_recent="100" && \
     pruning_keep_every="0" && \
@@ -41,18 +41,18 @@
     sed -i -e "s/^pruning-keep-every *=.*/pruning-keep-every = \"$pruning_keep_every\"/" $HOME/.nibid/config/app.toml && \
     sed -i -e "s/^pruning-interval *=.*/pruning-interval = \"$pruning_interval\"/" $HOME/.nibid/config/app.toml
 
-### 下载addrbook
+##### 下载addrbook
     wget -O $HOME/.nibid/config/addrbook.json https://snapshot.silentvalidator.com/testnet/nibiru/addrbook.json
 
-### 使用snapshot同步
+##### 使用snapshot同步
     sudo apt install lz4
     curl https://snapshots2-testnet.nodejumper.io/nibiru-testnet/nibiru-itn-1_2023-04-19.tar.lz4 | lz4 -dc - | tar -xf - -C $HOME/.nibid
 
-### 启动节点
+##### 启动节点
     screen -S nibid
     nibid start
 
-### 导入钱包或创建钱包
+##### 导入钱包或创建钱包
     各任务必须保证使用的钱包地址统一，如果某钱包已操作过其他任务，则此处应导入钱包，否则新建
     
     新建钱包
@@ -61,7 +61,7 @@
     导入钱包
     nibid keys add <钱包名> --recover
     
-### 领取测试币
+##### 领取测试币
     方式一：https://app.nibiru.fi/faucet
     上述方式需要安装Keplr钱包：https://chrome.google.com/webstore/detail/keplr/dmkamcknogkgcdfhhbddcghachkejeap?hl=en
     首次访问上述网站需要将nibiru-itn-1网络添加到Keplr钱包
@@ -69,7 +69,7 @@
     方式二：加入官方DC进入faucet领水，https://github.com/NibiruChain
     $request 钱包地址
 
-### 创建验证人
+##### 创建验证人
     nibid tx staking create-validator \
     --amount=1000000unibi \
     --pubkey=$(nibid tendermint show-validator) \
@@ -94,13 +94,24 @@
     4、质押给预言机
     5、取消质押您的代币
 
-### 进入区块浏览器操作
+##### 进入区块浏览器操作
     首次进入网站需要边接钱包
     https://explorer.kjnodes.com/nibiru-testnet/
+    
+###### 连接钱包
+<img width="810" alt="_20230419151520" src="https://user-images.githubusercontent.com/100336530/232999929-23aa9ef3-6848-4846-9f3b-74e3b1aa5904.png">
+<img width="827" alt="_20230419151541" src="https://user-images.githubusercontent.com/100336530/233000103-0db8cdbe-a32d-4e3d-b979-87ec6dded757.png">
+<img width="841" alt="_20230419151627" src="https://user-images.githubusercontent.com/100336530/233000145-576152cc-b7f9-4f54-9d9d-c7d10b27a5cc.png">
 
+<img width="1043" alt="_20230419152728" src="https://user-images.githubusercontent.com/100336530/233000913-de0a4627-8a3e-4a6b-9b84-2eb9e19091f8.png">
 
+###### 开始质押：如果因为gas问题操作失败，可以提高gas费再次质押
+<img width="767" alt="_20230419152825" src="https://user-images.githubusercontent.com/100336530/233001141-80cb2556-d222-4564-ab9a-432c07fd378c.png">
 
-
+###### 转质押
+<img width="570" alt="_20230419153210" src="https://user-images.githubusercontent.com/100336530/233003947-7089581f-c83c-40e4-8b74-5766bdd50e06.png">
+<img width="852" alt="_20230419153224" src="https://user-images.githubusercontent.com/100336530/233003996-fcab223d-ff87-4cc2-8e5a-85fa73417f2c.png">
+<img width="856" alt="_20230419153254" src="https://user-images.githubusercontent.com/100336530/233004037-6c1c9a2f-cf96-4139-82f7-d7b232e64cdf.png">
 
 
 
