@@ -1,12 +1,16 @@
 # Nibiru激励性测试网操作说明
-    测试网分为四个阶段，第一阶段主要测试Nibiru的Oracle模块和质押，第二阶段主要测试治理与智能合约，第三阶段测试流动性应用Perps&Spot，
-    第四阶段为交易竞赛。目前处于第二阶段，同时第一阶段的质押操作仍可操作。
+    测试网分为四个阶段：
+    第一阶段主要测试Nibiru的Oracle模块和质押；
+    第二阶段主要测试治理与智能合约；
+    第三阶段测试流动性应用Perps&Spot；
+    第四阶段为交易竞赛。
+    
+    目前处于第二阶段，同时第一阶段的质押操作仍可操作。
     
     其中质押任务与治理任务普通用户可参与
     部署节点任务、运行oracle、智能合约任务需要linux操作经验
     
     激励测试NIT 2于2023年4月5日开始，主要有两类任务：治理任务、智能合约任务，完成任务可各得300分
-    智能合约任务：部署合约、实例化合约、执行合约
     
     参加测试网必须先注册：
     https://gleam.io/yW6Ho/nibiru-incentivized-testnet-registration
@@ -100,31 +104,32 @@
     4、质押给预言机
     5、取消质押您的代币
 
-##### 通过区块浏览器操作
+#### 通过区块浏览器操作
     首次进入网站需要边接钱包
     https://explorer.kjnodes.com/nibiru-testnet/
     https://exp.utsa.tech/nibiru-test/
     
-###### 连接钱包
+##### 连接钱包
 <img width="810" alt="_20230419151520" src="https://user-images.githubusercontent.com/100336530/232999929-23aa9ef3-6848-4846-9f3b-74e3b1aa5904.png">
+######
 <img width="827" alt="_20230419151541" src="https://user-images.githubusercontent.com/100336530/233000103-0db8cdbe-a32d-4e3d-b979-87ec6dded757.png">
 <img width="841" alt="_20230419151627" src="https://user-images.githubusercontent.com/100336530/233000145-576152cc-b7f9-4f54-9d9d-c7d10b27a5cc.png">
 <img width="1043" alt="_20230419152728" src="https://user-images.githubusercontent.com/100336530/233000913-de0a4627-8a3e-4a6b-9b84-2eb9e19091f8.png">
 
-###### 开始质押：如果因为gas问题操作失败，可以提高gas费再次质押
+##### 开始质押：如果因为gas问题操作失败，可以提高gas费再次质押
 <img width="767" alt="_20230419152825" src="https://user-images.githubusercontent.com/100336530/233001141-80cb2556-d222-4564-ab9a-432c07fd378c.png">
 <img width="483" alt="_20230419153507" src="https://user-images.githubusercontent.com/100336530/233004398-ceff193b-2ed8-4c4c-95d7-39a88d0da9f7.png">
 
-###### 转质押
+##### 转质押
 <img width="570" alt="_20230419153210" src="https://user-images.githubusercontent.com/100336530/233003947-7089581f-c83c-40e4-8b74-5766bdd50e06.png">
 <img width="852" alt="_20230419153224" src="https://user-images.githubusercontent.com/100336530/233003996-fcab223d-ff87-4cc2-8e5a-85fa73417f2c.png">
 <img width="856" alt="_20230419153254" src="https://user-images.githubusercontent.com/100336530/233004037-6c1c9a2f-cf96-4139-82f7-d7b232e64cdf.png">
 <img width="399" alt="_20230419153415" src="https://user-images.githubusercontent.com/100336530/233004829-8c07b866-5406-445b-8bb2-9caa9f78a6e2.png">
 
-###### 领取质押奖励
+##### 领取质押奖励
 <img width="860" alt="_20230419153530" src="https://user-images.githubusercontent.com/100336530/233004959-52930c95-3eb5-4fea-b707-cdd60bded45e.png">
 
-###### 取消质押
+##### 取消质押
 <img width="860" alt="_20230419153737" src="https://user-images.githubusercontent.com/100336530/233005077-ef0b8405-aa33-4942-a433-80c8820d79b9.png">
 
 ## Nibiru激励性测试网第二阶段-治理任务
@@ -132,7 +137,7 @@
     1、参与至少1项治理提案
     2、参与4个或更多治理提案
     
-###### 通过区块浏览器投票    
+##### 通过区块浏览器投票    
 ![aPuqAAIcaQpVjybfsCa5d](https://user-images.githubusercontent.com/100336530/233007656-f6e61532-fe81-4715-a2c3-278897c4d416.png)
 ![38sWwPF-Awgu1hmQPmm9R](https://user-images.githubusercontent.com/100336530/233007801-1a037c05-5449-4f25-94ef-34fd1995e329.png)
 ![dGjXuLIyzEHX73u-VYM9s](https://user-images.githubusercontent.com/100336530/233007834-e08e4914-e38a-4200-a4bb-8e9b0c031603.png)
@@ -140,7 +145,9 @@
 
 
 ## Nibiru激励性测试网第二阶段-智能合约
-### 前提条件
+    智能合约任务步骤：部署合约、实例化合约、执行合约
+    
+##### 前提条件
     需要在linux系统服务器安装好nibid程序。可以自己部署节点，也可使用公共的RPC
     
     公共RPC：
@@ -150,11 +157,11 @@
     https://nibiru-testnet.nodejumper.io:443
     https://rpc-t.nibiru.nodestake.top:443
 
-### 用助记词导入钱包
+##### 用助记词导入钱包
     nibid keys add xxx --recover
 <img width="353" alt="_20230417180254" src="https://user-images.githubusercontent.com/100336530/232453123-d264cf84-5356-4547-be34-9ea52517fea6.png">
 
-### 部署合约
+##### 部署合约
     cd $HOME/.nibid
     mkdir wasm && cd wasm
     wget https://github.com/NibiruChain/cw-nibiru/raw/main/artifacts-cw-plus/cw20_base.wasm
@@ -169,7 +176,7 @@
 <img width="852" alt="_20230417180954" src="https://user-images.githubusercontent.com/100336530/232454712-011f45d7-5dfa-4ed2-baf9-11290d2c7eb5.png">
 
 
-### 实例化合约
+##### 实例化合约
     code_id=上一步查询交易结果所得
     address=你的nibiru钱包地址
     KEY_NAME=你的钱包名
@@ -201,7 +208,7 @@
     echo $contract
 ![image](https://user-images.githubusercontent.com/100336530/232455708-c77b1ba8-9d4a-4106-bd8b-ef5ee9af8fb8.png)
 
-### 执行合约
+##### 执行合约
     address=任意一个nibiru地址，也可以是自己的地址
     KEY_NAME=你的钱包名
     
