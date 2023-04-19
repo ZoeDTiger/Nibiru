@@ -1,5 +1,7 @@
 # Nibiru激励性测试网操作说明
-    测试网分为四个阶段，第一阶段主要测试Nibiru的Oracle模块和质押，第二阶段主要测试治理与智能合约，第三阶段测试流动性应用Perps&Spot，第四阶段为交易竞赛。目前处于第二阶段，同时第一阶段的质押操作仍可操作。
+    测试网分为四个阶段，第一阶段主要测试Nibiru的Oracle模块和质押，第二阶段主要测试治理与智能合约，第三阶段测试流动性应用Perps&Spot，
+    第四阶段为交易竞赛。目前处于第二阶段，同时第一阶段的质押操作仍可操作。
+    
     参加测试网必须先注册：
     https://gleam.io/yW6Ho/nibiru-incentivized-testnet-registration
     
