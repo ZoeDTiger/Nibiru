@@ -100,30 +100,25 @@
     
 ###### 连接钱包
 <img width="810" alt="_20230419151520" src="https://user-images.githubusercontent.com/100336530/232999929-23aa9ef3-6848-4846-9f3b-74e3b1aa5904.png">
-
 <img width="827" alt="_20230419151541" src="https://user-images.githubusercontent.com/100336530/233000103-0db8cdbe-a32d-4e3d-b979-87ec6dded757.png">
-
 <img width="841" alt="_20230419151627" src="https://user-images.githubusercontent.com/100336530/233000145-576152cc-b7f9-4f54-9d9d-c7d10b27a5cc.png">
-
 <img width="1043" alt="_20230419152728" src="https://user-images.githubusercontent.com/100336530/233000913-de0a4627-8a3e-4a6b-9b84-2eb9e19091f8.png">
-
-
 
 ###### 开始质押：如果因为gas问题操作失败，可以提高gas费再次质押
 <img width="767" alt="_20230419152825" src="https://user-images.githubusercontent.com/100336530/233001141-80cb2556-d222-4564-ab9a-432c07fd378c.png">
-
 <img width="483" alt="_20230419153507" src="https://user-images.githubusercontent.com/100336530/233004398-ceff193b-2ed8-4c4c-95d7-39a88d0da9f7.png">
-
 
 ###### 转质押
 <img width="570" alt="_20230419153210" src="https://user-images.githubusercontent.com/100336530/233003947-7089581f-c83c-40e4-8b74-5766bdd50e06.png">
-
 <img width="852" alt="_20230419153224" src="https://user-images.githubusercontent.com/100336530/233003996-fcab223d-ff87-4cc2-8e5a-85fa73417f2c.png">
-
 <img width="856" alt="_20230419153254" src="https://user-images.githubusercontent.com/100336530/233004037-6c1c9a2f-cf96-4139-82f7-d7b232e64cdf.png">
+<img width="399" alt="_20230419153415" src="https://user-images.githubusercontent.com/100336530/233004829-8c07b866-5406-445b-8bb2-9caa9f78a6e2.png">
 
 ###### 领取质押奖励
+<img width="860" alt="_20230419153530" src="https://user-images.githubusercontent.com/100336530/233004959-52930c95-3eb5-4fea-b707-cdd60bded45e.png">
 
+###### 取消质押
+<img width="860" alt="_20230419153737" src="https://user-images.githubusercontent.com/100336530/233005077-ef0b8405-aa33-4942-a433-80c8820d79b9.png">
 
 
 ## Nibiru激励性测试网第二阶段-智能合约
