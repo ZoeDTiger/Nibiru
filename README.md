@@ -2,10 +2,16 @@
     测试网分为四个阶段，第一阶段主要测试Nibiru的Oracle模块和质押，第二阶段主要测试治理与智能合约，第三阶段测试流动性应用Perps&Spot，
     第四阶段为交易竞赛。目前处于第二阶段，同时第一阶段的质押操作仍可操作。
     
+    其中质押任务与治理任务普通用户可参与
+    部署节点任务、运行oracle、智能合约任务需要linux操作经验
+    
+    激励测试NIT 2于2023年4月5日开始，主要有两类任务：治理任务、智能合约任务，完成任务可各得300分
+    智能合约任务：部署合约、实例化合约、执行合约
+    
     参加测试网必须先注册：
     https://gleam.io/yW6Ho/nibiru-incentivized-testnet-registration
     
-## 激励性测试网第一阶段-部署节点
+## 激励性测试网第一阶段-部署节点任务
     创建验证人（无论是否活跃）有75分。只需要同步一个完整的节点并发送一个创建验证人交易，如果没有被监禁额外加50分
 
 ##### 安装基础环境-go
@@ -86,7 +92,7 @@
     https://exp.utsa.tech/nibiru-test/
     https://explorer.kjnodes.com/nibiru-testnet/
 
-## Nibiru激励性测试网第一阶段-质押任务与Oracle模块
+## Nibiru激励性测试网第一阶段-质押任务
     质押者的任务如下,共有100分：
     1、将至少 1 个 NIBI 质押给验证者
     2、领取质押奖励
@@ -94,9 +100,10 @@
     4、质押给预言机
     5、取消质押您的代币
 
-##### 进入区块浏览器操作
+##### 通过区块浏览器操作
     首次进入网站需要边接钱包
     https://explorer.kjnodes.com/nibiru-testnet/
+    https://exp.utsa.tech/nibiru-test/
     
 ###### 连接钱包
 <img width="810" alt="_20230419151520" src="https://user-images.githubusercontent.com/100336530/232999929-23aa9ef3-6848-4846-9f3b-74e3b1aa5904.png">
@@ -120,12 +127,19 @@
 ###### 取消质押
 <img width="860" alt="_20230419153737" src="https://user-images.githubusercontent.com/100336530/233005077-ef0b8405-aa33-4942-a433-80c8820d79b9.png">
 
+## Nibiru激励性测试网第二阶段-治理任务
+    治理任务如下，投票期目前为4天，共300分：
+    1、参与至少1项治理提案
+    2、参与4个或更多治理提案
+    
+###### 通过区块浏览器投票    
+![aPuqAAIcaQpVjybfsCa5d](https://user-images.githubusercontent.com/100336530/233007656-f6e61532-fe81-4715-a2c3-278897c4d416.png)
+![38sWwPF-Awgu1hmQPmm9R](https://user-images.githubusercontent.com/100336530/233007801-1a037c05-5449-4f25-94ef-34fd1995e329.png)
+![dGjXuLIyzEHX73u-VYM9s](https://user-images.githubusercontent.com/100336530/233007834-e08e4914-e38a-4200-a4bb-8e9b0c031603.png)
+![PaLZdFPWr6Tg0QHW4ptIR](https://user-images.githubusercontent.com/100336530/233007849-f2a664d9-4aa8-4e02-a59e-26e21db177e0.png)
+
 
 ## Nibiru激励性测试网第二阶段-智能合约
-    激励测试NIT 2于2023年4月5日开始，主要有两类任务：治理任务、智能合约任务，完成任务可各得300分
-    治理任务：参与至少1项治理提案、参与4个或更多治理提案。投票期目前为4天。
-    智能合约任务：部署合约、实例化合约、执行合约
-
 ### 前提条件
     需要在linux系统服务器安装好nibid程序。可以自己部署节点，也可使用公共的RPC
     
