@@ -156,7 +156,7 @@
 ![PaLZdFPWr6Tg0QHW4ptIR](https://user-images.githubusercontent.com/100336530/233007849-f2a664d9-4aa8-4e02-a59e-26e21db177e0.png)
 
 
-## Nibiru激励性测试网第二阶段-智能合约
+## Nibiru激励性测试网第二阶段-智能合约任务
     智能合约任务步骤：部署合约、实例化合约、执行合约
     
 ##### 前提条件
@@ -243,7 +243,22 @@
     nibid q tx $txhash --output json| jq -r '.logs[] | .events[]'
 <img width="839" alt="_20230417182027" src="https://user-images.githubusercontent.com/100336530/232457054-ece8aaa0-6f44-4fdb-a3f8-870312b8cd9e.png">
 
-
+##### 快速操作命令
+    KEY_NAME=acc_200
+    nibid keys add $KEY_NAME --recover --keyring-backend test
+    
+    sed -i "s/$(cat args.json | jq -r '.name')/$KEY_NAME CW20 token/g" $HOME/.nibid/wasm/args.json
+    sed -i "s/$(cat args.json | jq -r '.initial_balances[0].address')/$(nibid keys show $KEY_NAME --keyring-backend test --output json | jq -r '.address')/g" $HOME/.nibid/wasm/args.json
+    sed -i "s/$(cat cw_transfer.json | jq -r '.transfer.recipient')/$(nibid keys show $KEY_NAME --keyring-backend test --output json | jq -r '.address')/g" $HOME/.nibid/wasm/cw_transfer.json
+    nibid tx wasm store cw20_base.wasm --from $KEY_NAME --gas=2500000 --fees=200000unibi --chain-id nibiru-itn-1 --keyring-backend test --output json -y > store.json
+    
+    codeid=$(nibid query tx $(cat store.json | jq -r '.txhash') --output json | jq -r '.logs[] | .events[1].attributes[1] | .value')
+    echo $codeid
+    nibid tx wasm inst $codeid "$(cat args.json)" --label="$(cat store.json | jq -r '.txhash')" --no-admin --from=$KEY_NAME --fees=5000unibi --chain-id nibiru-itn-1 --keyring-backend test --output json -y > inst.json
+    
+    contract=$(nibid q tx $(cat inst.json | jq -r '.txhash') --output json| jq  -r '.logs[] | .events[0] | .attributes[0] | .value')
+    echo $contract
+    nibid tx wasm execute $contract "$(cat cw_transfer.json)" --from $KEY_NAME --gas 2500000 --fees=200000unibi -y --chain-id nibiru-itn-1 --keyring-backend test --output json -y > execute.json
 
 
 
