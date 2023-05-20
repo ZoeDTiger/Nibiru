@@ -29,27 +29,24 @@
 
 ##### 初始化节点
     moniker=<你的节点名>
-    nibid init $moniker --chain-id=nibiru-itn-1
+    nibid config keyring-backend test
     nibid config chain-id nibiru-itn-1
+    nibid init $moniker --chain-id=nibiru-itn-1
 
 ##### 下载Genesis文件
     curl -s https://rpc.itn-1.nibiru.fi/genesis | jq -r .result.genesis >  ~/.nibid/config/genesis.json
 
 ##### 设置peer和seed
-       PEERS="df8596fa04abeff1d15b79570ff8c3eba85ed87a@35.185.8.9:26656,4a81486786a7c744691dc500360efcdaf22f0840@15.235.46.50:26656,c709cad9e11b315644fe8f1d2e90c03c5cba685c@34.91.8.241:26656,930b1eb3f0e57b97574ed44cb53b69fb65722786@144.76.30.36:15662,ad002a4592e7bcdfff31eedd8cee7763b39601e7@65.109.122.105:36656"
-    seeds="a431d3d1b451629a21799963d9eb10d83e261d2c@seed-1.itn-1.nibiru.fi:26656,6a78a2a5f19c93661a493ecbe69afc72b5c54117@seed-2.itn-1.nibiru.fi:26656"
-    sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" $HOME/.nibid/config/config.toml
-    sed -i.bak -e "s/^seeds *=.*/seeds = \"$seeds\"/" ~/.nibid/config/config.toml
-
-##### Pruning设置
-    pruning="custom" && \
-    pruning_keep_recent="100" && \
-    pruning_keep_every="0" && \
-    pruning_interval="10" && \
-    sed -i -e "s/^pruning *=.*/pruning = \"$pruning\"/" $HOME/.nibid/config/app.toml && \
-    sed -i -e "s/^pruning-keep-recent *=.*/pruning-keep-recent = \"$pruning_keep_recent\"/" $HOME/.nibid/config/app.toml && \
-    sed -i -e "s/^pruning-keep-every *=.*/pruning-keep-every = \"$pruning_keep_every\"/" $HOME/.nibid/config/app.toml && \
-    sed -i -e "s/^pruning-interval *=.*/pruning-interval = \"$pruning_interval\"/" $HOME/.nibid/config/app.toml
+    SEEDS="3f472746f46493309650e5a033076689996c8881@nibiru-testnet.rpc.kjnodes.com:39659,a431d3d1b451629a21799963d9eb10d83e261d2c@seed-1.itn-1.nibiru.fi:26656,6a78a2a5f19c93661a493ecbe69afc72b5c54117@seed-2.itn-1.nibiru.fi:26656"
+    PEERS="a1b96d1437fb82d3d77823ecbd565c6268f06e34@nibiru-testnet.nodejumper.io:27656"
+    sed -i 's|^seeds *=.*|seeds = "'$SEEDS'"|; s|^persistent_peers *=.*|persistent_peers = "'$PEERS'"|' $HOME/.nibid/config/config.toml
+    sed -i 's|^prometheus *=.*|prometheus = true|' $HOME/.nibid/config/config.toml
+    
+    sed -i 's|^pruning *=.*|pruning = "custom"|g' $HOME/.nibid/config/app.toml
+    sed -i 's|^pruning-keep-recent  *=.*|pruning-keep-recent = "100"|g' $HOME/.nibid/config/app.toml
+    sed -i 's|^pruning-interval *=.*|pruning-interval = "10"|g' $HOME/.nibid/config/app.toml
+    sed -i 's|^snapshot-interval *=.*|snapshot-interval = 0|g' $HOME/.nibid/config/app.toml
+    sed -i 's|^minimum-gas-prices *=.*|minimum-gas-prices = "0.0001unibi"|g' $HOME/.nibid/config/app.toml
 
 ##### 下载addrbook
     wget -O $HOME/.nibid/config/addrbook.json https://snapshot.silentvalidator.com/testnet/nibiru/addrbook.json
@@ -78,6 +75,14 @@
     
     方式二：加入官方DC进入faucet领水，https://github.com/NibiruChain
     $request 钱包地址
+    
+    方式三：命令
+    FAUCET_URL="https://faucet.itn-1.nibiru.fi/"
+    ADDR="nibi开头的钱包地址"
+    curl -X POST -d '{"address": "'"$ADDR"'", "coins": ["11000000unibi","100000000unusd","100000000uusdt"]}' $FAUCET_URL
+    
+    查看钱包余额：
+    nibid q bank balances $(nibid keys show wallet -a)
 
 ##### 创建验证人
     nibid tx staking create-validator \
@@ -91,10 +96,17 @@
     --min-self-delegation=1 \
     --from=钱包地址 \
     --fees=10000unibi
+    -y
     
-    之后可以去区块浏览器查看验证人是否创建成功。
+    通过命令查看验证人详情：
+    nibid q staking validator $(nibid keys show wallet --bech val -a)
+    
+    通过区块浏览器查看验证人是否创建成功：
     https://exp.utsa.tech/nibiru-test/
     https://explorer.kjnodes.com/nibiru-testnet/
+
+##### 查看区块同步状态
+    nibid status 2>&1 | jq .SyncInfo
 
 ## Nibiru激励性测试网第一阶段-质押任务
     质押者的任务如下,共有100分：
