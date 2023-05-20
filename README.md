@@ -15,6 +15,10 @@
     参加测试网必须先注册：
     https://gleam.io/yW6Ho/nibiru-incentivized-testnet-registration
     
+    区块浏览器：
+    https://exp.utsa.tech/nibiru-test/staking
+    https://explorer.kjnodes.com/nibiru-testnet/staking
+    
 ## 激励性测试网第一阶段-部署节点任务
     创建验证人（无论是否活跃）有75分。只需要同步一个完整的节点并发送一个创建验证人交易，如果没有被监禁额外加50分
 
